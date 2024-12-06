@@ -1,1 +1,15 @@
-//Vamos a escribir el workflow de GitHub Actions
+#Vamos a escribir el workflow de GitHub Actions
+name: Pruebas Automatizadas con AA
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          # Aquí puedes ejecutar tus pruebas y enviar los resultados
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"status":"success","results":"All tests passed"}' \
+          https://api.github.com/repos/tu_usuario/tu_repositorio/actions/workflows/tu_workflow_id/dispatches
